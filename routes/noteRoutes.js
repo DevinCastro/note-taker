@@ -22,6 +22,7 @@ router.post('/notes', (req, res) => {
     let notes = JSON.parse(data)
     let note = {
       id: uuid.v1(),
+      title: req.body.title,
       text: req.body.text,
     }
     notes.push(note)
@@ -29,30 +30,12 @@ router.post('/notes', (req, res) => {
       if (err) { console.log(err) }
     })
     // console.log(notes)
+    // send ok status code
     res.json(note)
   })
 })
 
-// PUT one item
-// router.put('/notes/:text', (req, res) => {
-//   fs.readFile(join(__dirname, '..', 'db', 'db.json'), 'utf8', (err, data) => {
-//     if (err) { console.log(err) }
 
-//     let items = JSON.parse(data)
-
-//     for (i = 0; i < items.length; i++) {
-//       if (items[i].text === req.params.text) {
-//         items[i].isDone = req.body.isDone
-//       }
-//     }
-//     fs.writeFile(join(__dirname, '..', 'db', 'db.json'), JSON.stringify(items), err => {
-//       if (err) { console.log(err) }
-//       res.sendStatus(200)
-//     })
-
-//   })
-
-// })
 
 // DELETE one item
 router.delete('/notes/:id', (req, res) => {
