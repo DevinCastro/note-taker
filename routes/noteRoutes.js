@@ -12,7 +12,6 @@ router.get('/notes', (req, res) => {
     res.json(JSON.parse(data))
   })
 
-  // res.json(items)
 })
 
 // POST one item
@@ -29,8 +28,6 @@ router.post('/notes', (req, res) => {
     fs.writeFile(join(__dirname, '..', 'db', 'db.json'), JSON.stringify(notes), err => {
       if (err) { console.log(err) }
     })
-    // console.log(notes)
-    // send ok status code
     res.json(note)
   })
 })
@@ -50,7 +47,6 @@ router.delete('/notes/:id', (req, res) => {
     fs.writeFile(join(__dirname, '..', 'db', 'db.json'), JSON.stringify(notes), err => {
       if (err) { console.log(err) }
     })
-    // console.log(notes)
     // send ok status code
     res.sendStatus(200)
   })
